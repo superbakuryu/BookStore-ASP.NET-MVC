@@ -1,0 +1,50 @@
+﻿@model QLSach.Models.tb_NXB
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>tb_NXB</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.tenNXB)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tenNXB)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.diaChi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.diaChi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.dienThoai)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.dienThoai)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.email)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.maNXB }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

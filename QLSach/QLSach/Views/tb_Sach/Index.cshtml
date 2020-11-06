@@ -1,0 +1,83 @@
+﻿@model IEnumerable<QLSach.Models.tb_Sach>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Thông tin sách</h2>
+
+<p>
+    @Html.ActionLink("Thêm sách", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @*@Html.DisplayNameFor(model => model.tieuDe)*@
+            Tiêu đề
+        </th>
+        <th>
+            @*@Html.DisplayNameFor(model => model.tacGia)*@
+            Tác giả
+        </th>
+        <th>
+            @*@Html.DisplayNameFor(model => model.namXuatBan)*@
+            Năm xuất bản
+        </th>
+        <th>
+            @*@Html.DisplayNameFor(model => model.giaBia)*@
+            Giá bán
+        </th>
+        <th>
+            @*@Html.DisplayNameFor(model => model.soLuongTon)*@
+            Số lượng tồn
+        </th>
+        <th>
+            @*@Html.DisplayNameFor(model => model.tb_GianHang.tenGianHang)*@
+            Tên gian hàng
+        </th>
+        <th>
+            @*@Html.DisplayNameFor(model => model.tb_NXB.tenNXB)*@
+            Nhà xuất bản
+        </th>
+        <th>
+            @*@Html.DisplayNameFor(model => model.tb_NXB.tenNXB)*@
+            Ảnh
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.tieuDe)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.tacGia)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.namXuatBan)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.giaBia)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.soLuongTon)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.tb_GianHang.tenGianHang)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.tb_NXB.tenNXB)
+    </td>
+    <td>
+        <img src="~/Anh/@item.anh" width="60px" />
+    </td>
+    <td>
+        @Html.ActionLink("Sửa", "Edit", new { id = item.maSach }) |
+        @Html.ActionLink("Chi tiết", "Details", new { id = item.maSach }) |
+        @Html.ActionLink("Xóa", "Delete", new { id = item.maSach })
+    </td>
+</tr>
+}
+
+</table>
