@@ -1,0 +1,214 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="BookShopModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="tb_CTPN">
+    <Key>
+      <PropertyRef Name="maCTPN" />
+    </Key>
+    <Property Name="maCTPN" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="maPhieuNhap" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="maSach" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="soLuong" Type="int" Nullable="false" />
+    <Property Name="donGia" Type="bigint" Nullable="false" />
+    <Property Name="thanhTien" Type="bigint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tb_CTPX">
+    <Key>
+      <PropertyRef Name="maCTPX" />
+    </Key>
+    <Property Name="maCTPX" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="maPhieuXuat" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="maSach" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="soLuong" Type="int" Nullable="false" />
+    <Property Name="thanhTien" Type="bigint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tb_GianHang">
+    <Key>
+      <PropertyRef Name="maGianHang" />
+    </Key>
+    <Property Name="maGianHang" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="tenGianHang" Type="ntext" Nullable="false" />
+    <Property Name="moTa" Type="ntext" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tb_NguoiDung">
+    <Key>
+      <PropertyRef Name="TaiKhoan" />
+    </Key>
+    <Property Name="TaiKhoan" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="MatKhau" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tb_NXB">
+    <Key>
+      <PropertyRef Name="maNXB" />
+    </Key>
+    <Property Name="maNXB" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="tenNXB" Type="ntext" Nullable="false" />
+    <Property Name="diaChi" Type="ntext" Nullable="false" />
+    <Property Name="dienThoai" Type="ntext" Nullable="false" />
+    <Property Name="email" Type="ntext" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tb_PhieuNhap">
+    <Key>
+      <PropertyRef Name="maPhieuNhap" />
+    </Key>
+    <Property Name="maPhieuNhap" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="maNXB" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="ngayNhap" Type="date" Nullable="false" />
+    <Property Name="thanhTien" Type="bigint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tb_PhieuXuat">
+    <Key>
+      <PropertyRef Name="maPhieuXuat" />
+    </Key>
+    <Property Name="maPhieuXuat" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="tenKH" Type="ntext" Nullable="false" />
+    <Property Name="ngayXuat" Type="date" Nullable="false" />
+    <Property Name="thanhTien" Type="bigint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tb_Sach">
+    <Key>
+      <PropertyRef Name="maSach" />
+    </Key>
+    <Property Name="maSach" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="tieuDe" Type="ntext" Nullable="false" />
+    <Property Name="tacGia" Type="ntext" Nullable="false" />
+    <Property Name="namXuatBan" Type="int" Nullable="false" />
+    <Property Name="giaBia" Type="int" Nullable="false" />
+    <Property Name="maNXB" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="soLuongTon" Type="int" Nullable="false" />
+    <Property Name="maGianHang" Type="nvarchar" MaxLength="50" />
+    <Property Name="anh" Type="nvarchar" MaxLength="200" />
+  </EntityType>
+  <Association Name="FK_tb_CTPN_tb_PhieuNhap">
+    <End Role="tb_PhieuNhap" Type="Self.tb_PhieuNhap" Multiplicity="1" />
+    <End Role="tb_CTPN" Type="Self.tb_CTPN" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tb_PhieuNhap">
+        <PropertyRef Name="maPhieuNhap" />
+      </Principal>
+      <Dependent Role="tb_CTPN">
+        <PropertyRef Name="maPhieuNhap" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tb_CTPN_tb_Sach">
+    <End Role="tb_Sach" Type="Self.tb_Sach" Multiplicity="1" />
+    <End Role="tb_CTPN" Type="Self.tb_CTPN" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tb_Sach">
+        <PropertyRef Name="maSach" />
+      </Principal>
+      <Dependent Role="tb_CTPN">
+        <PropertyRef Name="maSach" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tb_CTPX_tb_PhieuXuat">
+    <End Role="tb_PhieuXuat" Type="Self.tb_PhieuXuat" Multiplicity="1" />
+    <End Role="tb_CTPX" Type="Self.tb_CTPX" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tb_PhieuXuat">
+        <PropertyRef Name="maPhieuXuat" />
+      </Principal>
+      <Dependent Role="tb_CTPX">
+        <PropertyRef Name="maPhieuXuat" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tb_CTPX_tb_Sach">
+    <End Role="tb_Sach" Type="Self.tb_Sach" Multiplicity="1" />
+    <End Role="tb_CTPX" Type="Self.tb_CTPX" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tb_Sach">
+        <PropertyRef Name="maSach" />
+      </Principal>
+      <Dependent Role="tb_CTPX">
+        <PropertyRef Name="maSach" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tb_PhieuNhap_tb_NXB">
+    <End Role="tb_NXB" Type="Self.tb_NXB" Multiplicity="1" />
+    <End Role="tb_PhieuNhap" Type="Self.tb_PhieuNhap" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tb_NXB">
+        <PropertyRef Name="maNXB" />
+      </Principal>
+      <Dependent Role="tb_PhieuNhap">
+        <PropertyRef Name="maNXB" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tb_Sach_tb_GianHang">
+    <End Role="tb_GianHang" Type="Self.tb_GianHang" Multiplicity="0..1" />
+    <End Role="tb_Sach" Type="Self.tb_Sach" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tb_GianHang">
+        <PropertyRef Name="maGianHang" />
+      </Principal>
+      <Dependent Role="tb_Sach">
+        <PropertyRef Name="maGianHang" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tb_Sach_tb_NXB">
+    <End Role="tb_NXB" Type="Self.tb_NXB" Multiplicity="1" />
+    <End Role="tb_Sach" Type="Self.tb_Sach" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tb_NXB">
+        <PropertyRef Name="maNXB" />
+      </Principal>
+      <Dependent Role="tb_Sach">
+        <PropertyRef Name="maNXB" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="BookShopModelStoreContainer">
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tb_CTPN" EntityType="Self.tb_CTPN" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tb_CTPX" EntityType="Self.tb_CTPX" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tb_GianHang" EntityType="Self.tb_GianHang" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tb_NguoiDung" EntityType="Self.tb_NguoiDung" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tb_NXB" EntityType="Self.tb_NXB" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tb_PhieuNhap" EntityType="Self.tb_PhieuNhap" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tb_PhieuXuat" EntityType="Self.tb_PhieuXuat" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tb_Sach" EntityType="Self.tb_Sach" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_tb_CTPN_tb_PhieuNhap" Association="Self.FK_tb_CTPN_tb_PhieuNhap">
+      <End Role="tb_PhieuNhap" EntitySet="tb_PhieuNhap" />
+      <End Role="tb_CTPN" EntitySet="tb_CTPN" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tb_CTPN_tb_Sach" Association="Self.FK_tb_CTPN_tb_Sach">
+      <End Role="tb_Sach" EntitySet="tb_Sach" />
+      <End Role="tb_CTPN" EntitySet="tb_CTPN" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tb_CTPX_tb_PhieuXuat" Association="Self.FK_tb_CTPX_tb_PhieuXuat">
+      <End Role="tb_PhieuXuat" EntitySet="tb_PhieuXuat" />
+      <End Role="tb_CTPX" EntitySet="tb_CTPX" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tb_CTPX_tb_Sach" Association="Self.FK_tb_CTPX_tb_Sach">
+      <End Role="tb_Sach" EntitySet="tb_Sach" />
+      <End Role="tb_CTPX" EntitySet="tb_CTPX" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tb_PhieuNhap_tb_NXB" Association="Self.FK_tb_PhieuNhap_tb_NXB">
+      <End Role="tb_NXB" EntitySet="tb_NXB" />
+      <End Role="tb_PhieuNhap" EntitySet="tb_PhieuNhap" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tb_Sach_tb_GianHang" Association="Self.FK_tb_Sach_tb_GianHang">
+      <End Role="tb_GianHang" EntitySet="tb_GianHang" />
+      <End Role="tb_Sach" EntitySet="tb_Sach" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tb_Sach_tb_NXB" Association="Self.FK_tb_Sach_tb_NXB">
+      <End Role="tb_NXB" EntitySet="tb_NXB" />
+      <End Role="tb_Sach" EntitySet="tb_Sach" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

@@ -1,0 +1,113 @@
+﻿/*TABLE*/
+.table {
+    border-collapse: collapse;
+    margin: 25px 0;
+    font-size: .9em;
+    min-width: 400px;
+    border-radius: 5px 5px 0 0;
+    overflow: hidden;
+    box-shadow: 0 0 20px rgba(0, 0, 0, .15)
+}
+
+    .table thead tr th {
+        background-color: #009879;
+        color: #fff;
+        text-align: left;
+        font-weight: 700
+    }
+
+    .table td,
+    .table th {
+        padding: 12px 15px
+    }
+
+    .table tbody tr {
+        border-bottom: 1px solid #ddd
+    }
+
+        .table tbody tr:nth-of-type(even) {
+            background-color: #f3f3f3
+        }
+
+    .table tbody:last-of-type {
+        border-bottom: 3px solid #009879
+    }
+
+    .table tbody tr.active-row {
+        font-weight: 700;
+        color: #009879
+    }
+
+/*BUTTON*/
+.btn {
+    position: relative;
+    display: inline-block;
+    width: 110px;
+    letter-spacing: 1.2px;
+    padding: 6px 20px;
+    text-align: center;
+    text-transform: uppercase;
+    overflow: hidden;
+    z-index: 1;
+    cursor: pointer
+}
+
+    .btn:focus {
+        outline: none
+    }
+
+.btn--primary {
+    color: lightslategray
+}
+
+.btn--border {
+    border-width: 1px;
+    border-style: solid;
+    border-radius: 10px;
+    box-sizing: border-box
+}
+
+.btn--animated {
+    -webkit-transition-property: color;
+    transition-property: color;
+    -webkit-transition-duration: 0.5s;
+    transition-duration: 0.5s
+}
+
+    .btn--animated.btn--border.btn--primary {
+        border: 1px solid lightslategray
+    }
+
+    .btn--animated:before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: lightslategray;
+        -webkit-transform: scaleX(0);
+        transform: scaleX(0);
+        -webkit-transform-origin: 0 50%;
+        transform-origin: 0 50%;
+        -webkit-transition-property: -webkit-transform;
+        transition-property: -webkit-transform;
+        transition-property: transform;
+        transition-property: transform, -webkit-transform;
+        -webkit-transition-duration: 0.5s;
+        transition-duration: 0.5s;
+        -webkit-transition-timing-function: ease-out;
+        transition-timing-function: ease-out;
+        z-index: -1
+    }
+
+    .btn--animated:hover {
+        color: #fff
+    }
+
+        .btn--animated:hover:before {
+            -webkit-transform: scaleX(1);
+            transform: scaleX(1);
+            -webkit-transition-timing-function: cubic-bezier(.45, 1.64, .47, .66);
+            transition-timing-function: cubic-bezier(.45, 1.64, .47, .66)
+        }

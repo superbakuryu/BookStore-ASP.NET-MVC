@@ -1,0 +1,80 @@
+﻿@model QLSach.Models.tb_Sach
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>XÓA</h2>
+
+<h3 style="font-family:Arial">Bạn có chắc chắn muốn xóa?</h3>
+<div>
+    <h4>tb_Sach</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.tieuDe)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tieuDe)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tacGia)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tacGia)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.namXuatBan)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.namXuatBan)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.giaBia)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.giaBia)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.soLuongTon)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.soLuongTon)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tb_GianHang.tenGianHang)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tb_GianHang.tenGianHang)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tb_NXB.tenNXB)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tb_NXB.tenNXB)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Xóa" class="btn btn-default" /> |
+            @Html.ActionLink("Quay lại", "Index")
+        </div>
+    }
+</div>
