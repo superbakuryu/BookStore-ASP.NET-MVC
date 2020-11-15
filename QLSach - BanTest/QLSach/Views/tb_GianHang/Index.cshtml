@@ -1,0 +1,46 @@
+﻿@model IEnumerable<QLSach.Models.tb_GianHang>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<link rel="stylesheet" href="~/Theme/corporation/layout/styles/css-tu-tao.css" type="text/css" />
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.tenGianHang)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.moTa)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+
+@foreach (var item in Model) {
+    <tbody>
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.tenGianHang)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.moTa)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.maGianHang }) |
+                @Html.ActionLink("Details", "Details", new { id = item.maGianHang }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.maGianHang })
+            </td>
+        </tr>
+    </tbody>
+}
+
+</table>
+            

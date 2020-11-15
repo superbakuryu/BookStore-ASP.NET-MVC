@@ -1,0 +1,39 @@
+﻿@model IEnumerable<QLSach.Models.tb_NguoiDung>
+
+@{
+    ViewBag.Title = "Index";
+}
+<link rel="stylesheet" href="~/Theme/corporation/layout/styles/css-tu-tao.css" type="text/css" />
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.MatKhau)
+            </th>
+            <th>Thao tác</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.MatKhau)
+                </td>
+                <td>
+                    <center>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.TaiKhoan }, new { @class = "btn btn--border btn--primary btn--animated" })
+                        @Html.ActionLink("Details", "Details", new { id = item.TaiKhoan }, new { @class = "btn btn--border btn--primary btn--animated" })
+                        @Html.ActionLink("Delete", "Delete", new { id = item.TaiKhoan }, new { @class = "btn btn--border btn--primary btn--animated" })
+                    </center>
+                </td>
+            </tr>
+        }
+    </tbody>
+    </table>
