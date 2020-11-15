@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using QLSach.Models;
+using PagedList;
 
 namespace QLSach.Controllers
 {
@@ -15,9 +16,47 @@ namespace QLSach.Controllers
         private BookShopEntities db = new BookShopEntities();
 
         // GET: tb_GianHang
-        public ActionResult Index()
+        public ActionResult Index(string sortOrder, string currentFilter, string searchString, int? page)
         {
-            return View(db.tb_GianHang.ToList());
+            ViewBag.CurrentSort = sortOrder;
+            ViewBag.MaSortParm = sortOrder == "ma" ? "ma_desc" : "ma";
+            ViewBag.TenSortParm = sortOrder == "ten" ? "ten_desc" : "ten";
+
+            if (searchString != null)
+            {
+                page = 1;
+            }
+            else
+            {
+                searchString = currentFilter;
+            }
+
+            ViewBag.CurrentFilter = searchString;
+            var model = db.tb_GianHang.AsQueryable();
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                model = model.Where(s => s.maGianHang.Contains(searchString)
+                                       || s.tenGianHang.Contains(searchString));
+            }
+            switch (sortOrder)
+            {
+                case "ma_desc":
+                    model = model.OrderByDescending(s => s.maGianHang);
+                    break;
+                case "ten":
+                    model = model.OrderBy(s => s.tenGianHang);
+                    break;
+                case "ten_desc":
+                    model = model.OrderByDescending(s => s.tenGianHang);
+                    break;
+                default:
+                    model = model.OrderBy(s => s.maGianHang);
+                    break;
+            }
+
+            int pageSize = 5;
+            int pageNumber = (page ?? 1);
+            return View(model.ToPagedList(pageNumber, pageSize));
         }
 
         // GET: tb_GianHang/Details/5

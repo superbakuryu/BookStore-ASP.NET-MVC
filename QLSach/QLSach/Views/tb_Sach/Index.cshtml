@@ -1,14 +1,27 @@
-﻿@model IEnumerable<QLSach.Models.tb_Sach>
-
+﻿@model PagedList.IPagedList<QLSach.Models.tb_Sach>
+<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
+@using PagedList.Mvc;
 @{
     ViewBag.Title = "Index";
 }
 <link rel="stylesheet" href="~/Theme/corporation/layout/styles/css-tu-tao.css" type="text/css" />
+<style>
+    .sapxep {
+        background-color: #009879 !important;
+        color: #fff !important;
+    }
+</style>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
 <h2>Thông tin sách</h2>
-<form action="/tb_sach/index" method="get">
-    <input type="text" name="search" value=""/>
-    <input type="submit" name="submit" value="Tìm kiếm"/>
-</form>
+
+@using (Html.BeginForm())
+{
+    <p>
+        Tìm kiếm: @Html.TextBox("SearchString")
+        <input type="submit" value="Tìm kiếm" />
+    </p>
+}
 
 <p>
     @Html.ActionLink("Thêm sách", "Create")
@@ -18,7 +31,39 @@
         <tr>
             <th>
                 @*@Html.DisplayNameFor(model => model.tieuDe)*@
-                Tiêu đề
+                <div style="display:flex">
+                    <div>
+                        @Html.ActionLink("Mã sách", "Index", new { sortOrder = ViewBag.MaSortParm, currentFilter = ViewBag.CurrentFilter }, new { @class = "sapxep" })
+                    </div>
+                    <div style="margin-left:10px">
+                        @if (ViewBag.MaSortParm == null || ViewBag.MaSortParm == "ma")
+                        {
+                            <i class="fa fa-sort-asc" style="font-size:24px"></i>
+                        }
+                        else
+                        {
+                            <i class="fa fa-sort-desc" style="font-size:24px"></i>
+                        }
+                    </div>
+                </div>
+            </th>
+            <th>
+                @*@Html.DisplayNameFor(model => model.tieuDe)*@
+                <div style="display:flex">
+                    <div>
+                        @Html.ActionLink("Tiêu đề", "Index", new { sortOrder = ViewBag.TenSortParm, currentFilter = ViewBag.CurrentFilter }, new { @class = "sapxep" })
+                    </div>
+                    <div style="margin-left:10px">
+                        @if (ViewBag.TenSortParm == null || ViewBag.TenSortParm == "ten")
+                        {
+                            <i class="fa fa-sort-asc" style="font-size:24px"></i>
+                        }
+                        else
+                        {
+                            <i class="fa fa-sort-desc" style="font-size:24px"></i>
+                        }
+                    </div>
+                </div>
             </th>
             <th>
                 @*@Html.DisplayNameFor(model => model.tacGia)*@
@@ -48,13 +93,16 @@
                 @*@Html.DisplayNameFor(model => model.tb_NXB.tenNXB)*@
                 Ảnh
             </th>
-            <th>Thao tác</th>
+            <th><center>Thao tác</center></th>
         </tr>
     </thead>
     <tbody>
         @foreach (var item in Model)
         {
             <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.maSach)
+                </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.tieuDe)
                 </td>
@@ -91,3 +139,9 @@
     </tbody>
 
 </table>
+
+<br />
+Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+
+@Html.PagedListPager(Model, page => Url.Action("Index",
+    new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))

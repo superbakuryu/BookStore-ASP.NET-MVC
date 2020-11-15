@@ -1,46 +1,88 @@
-﻿@model IEnumerable<QLSach.Models.tb_GianHang>
+﻿@model PagedList.IPagedList<QLSach.Models.tb_GianHang>
+<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
+@using PagedList.Mvc;
 
 @{
     ViewBag.Title = "Index";
 }
 
 <link rel="stylesheet" href="~/Theme/corporation/layout/styles/css-tu-tao.css" type="text/css" />
+<style>
+    .sapxep {
+        background-color: #009879 !important;
+        color: #fff !important;
+    }
+</style>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-<h2>Index</h2>
+<h2>Thông tin gian hàng</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Thêm mới", "Create")
 </p>
+
+@using (Html.BeginForm())
+{
+    <p>
+        Tìm kiếm: @Html.TextBox("SearchString")
+        <input type="submit" value="Tìm kiếm" />
+    </p>
+}
 <table class="table">
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.tenGianHang)
+                <div style="display:flex">
+                    <div>
+                        @Html.ActionLink("Mã gian hàng", "Index", new { sortOrder = ViewBag.MaSortParm, currentFilter = ViewBag.CurrentFilter }, new { @class = "sapxep" })
+                    </div>
+                    <div style="margin-left:20px">
+                        @if (ViewBag.MaSortParm == null || ViewBag.MaSortParm == "ma")
+                        {
+                            <i class="fa fa-sort-asc" style="font-size:24px"></i>
+                        }
+                        else
+                        {
+                            <i class="fa fa-sort-desc" style="font-size:24px"></i>
+                        }
+                    </div>
+                </div>
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.moTa)
+                Tên gian hàng
             </th>
-            <th></th>
+            <th>
+                Mô tả
+            </th>
+            <th><center>Thao tác</center></th>
         </tr>
     </thead>
 
-@foreach (var item in Model) {
-    <tbody>
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.tenGianHang)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.moTa)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.maGianHang }) |
-                @Html.ActionLink("Details", "Details", new { id = item.maGianHang }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.maGianHang })
-            </td>
-        </tr>
-    </tbody>
-}
+    @foreach (var item in Model)
+    {
+        <tbody>
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.maGianHang)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.tenGianHang)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.moTa)
+                </td>
+                <td>
+                    @Html.ActionLink("Sửa", "Edit", new { id = item.maGianHang }, new { @class = "btn btn--border btn--primary btn--animated" }) 
+                    @Html.ActionLink("Chi tiết", "Details", new { id = item.maGianHang }, new { @class = "btn btn--border btn--primary btn--animated" }) 
+                    @Html.ActionLink("Xóa", "Delete", new { id = item.maGianHang }, new { @class = "btn btn--border btn--primary btn--animated" })
+                </td>
+            </tr>
+        </tbody>
+    }
 
 </table>
-            
+<br />
+Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+
+@Html.PagedListPager(Model, page => Url.Action("Index",
+    new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))

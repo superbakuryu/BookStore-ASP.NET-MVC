@@ -87,14 +87,14 @@
       <EntityTypeMapping TypeName="BookShopModel.tb_Sach">
         <MappingFragment StoreEntitySet="tb_Sach">
           <ScalarProperty Name="anh" ColumnName="anh" />
-          <ScalarProperty Name="maSach" ColumnName="maSach" />
-          <ScalarProperty Name="tieuDe" ColumnName="tieuDe" />
-          <ScalarProperty Name="tacGia" ColumnName="tacGia" />
-          <ScalarProperty Name="namXuatBan" ColumnName="namXuatBan" />
-          <ScalarProperty Name="giaBia" ColumnName="giaBia" />
-          <ScalarProperty Name="maNXB" ColumnName="maNXB" />
-          <ScalarProperty Name="soLuongTon" ColumnName="soLuongTon" />
           <ScalarProperty Name="maGianHang" ColumnName="maGianHang" />
+          <ScalarProperty Name="soLuongTon" ColumnName="soLuongTon" />
+          <ScalarProperty Name="maNXB" ColumnName="maNXB" />
+          <ScalarProperty Name="giaBia" ColumnName="giaBia" />
+          <ScalarProperty Name="namXuatBan" ColumnName="namXuatBan" />
+          <ScalarProperty Name="tacGia" ColumnName="tacGia" />
+          <ScalarProperty Name="tieuDe" ColumnName="tieuDe" />
+          <ScalarProperty Name="maSach" ColumnName="maSach" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

@@ -17,19 +17,47 @@ namespace QLSach.Controllers
         private BookShopEntities db = new BookShopEntities();
 
         // GET: tb_Sach
-        public ActionResult Index( string search )
+        public ViewResult Index(string sortOrder, string currentFilter, string searchString, int? page)
         {
-            
-            List<tb_Sach> sach;
-            if(search == null)
+            ViewBag.CurrentSort = sortOrder;
+            ViewBag.MaSortParm = sortOrder == "ma"? "ma_desc" : "ma";
+            ViewBag.TenSortParm = sortOrder == "ten" ? "ten_desc" : "ten";
+
+            if (searchString != null)
             {
-                sach = db.tb_Sach.Include(t => t.tb_GianHang).Include(t => t.tb_NXB).ToList();
+                page = 1;
             }
             else
             {
-                sach = db.tb_Sach.Where(t => t.tieuDe.Contains(search) || t.tacGia.Contains(search)).Include(t => t.tb_GianHang).Include(t => t.tb_NXB).ToList();
+                searchString = currentFilter;
             }
-            return View(sach);
+
+            ViewBag.CurrentFilter = searchString;
+
+            var models = db.tb_Sach.AsQueryable();
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                models = models.Where(s => s.maSach.Contains(searchString)
+                                       || s.tieuDe.Contains(searchString));
+            }
+            switch (sortOrder)
+            {
+                case "ma_desc":
+                    models = models.OrderByDescending(s => s.maSach);
+                    break;
+                case "ten":
+                    models = models.OrderBy(s => s.tieuDe);
+                    break;
+                case "ten_desc":
+                    models = models.OrderByDescending(s => s.tieuDe);
+                    break;
+                default:
+                    models = models.OrderBy(s => s.maSach);
+                    break;
+            }
+            int pageSize = 5;
+            int pageNumber = (page ?? 1);
+            return View(models.ToPagedList(pageNumber, pageSize));
         }
 
         // GET: tb_Sach/Details/5

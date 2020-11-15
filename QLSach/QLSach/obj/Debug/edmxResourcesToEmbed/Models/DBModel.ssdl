@@ -79,8 +79,8 @@
       <PropertyRef Name="maSach" />
     </Key>
     <Property Name="maSach" Type="nvarchar" MaxLength="50" Nullable="false" />
-    <Property Name="tieuDe" Type="ntext" Nullable="false" />
-    <Property Name="tacGia" Type="ntext" Nullable="false" />
+    <Property Name="tieuDe" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="tacGia" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="namXuatBan" Type="int" Nullable="false" />
     <Property Name="giaBia" Type="int" Nullable="false" />
     <Property Name="maNXB" Type="nvarchar" MaxLength="50" Nullable="false" />

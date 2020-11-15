@@ -13,14 +13,14 @@
         <EntityTypeShape EntityType="BookShopModel.tb_NXB" Width="1.5" PointX="0.75" PointY="5.25" IsExpanded="true" />
         <EntityTypeShape EntityType="BookShopModel.tb_PhieuNhap" Width="1.5" PointX="3" PointY="5.375" IsExpanded="true" />
         <EntityTypeShape EntityType="BookShopModel.tb_PhieuXuat" Width="1.5" PointX="3" PointY="9.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="BookShopModel.tb_Sach" Width="1.5" PointX="3" PointY="0.75" IsExpanded="true" />
         <AssociationConnector Association="BookShopModel.FK_tb_CTPN_tb_PhieuNhap" ManuallyRouted="false" />
-        <AssociationConnector Association="BookShopModel.FK_tb_CTPN_tb_Sach" ManuallyRouted="false" />
         <AssociationConnector Association="BookShopModel.FK_tb_CTPX_tb_PhieuXuat" ManuallyRouted="false" />
-        <AssociationConnector Association="BookShopModel.FK_tb_CTPX_tb_Sach" ManuallyRouted="false" />
-        <AssociationConnector Association="BookShopModel.FK_tb_Sach_tb_GianHang" ManuallyRouted="false" />
         <AssociationConnector Association="BookShopModel.FK_tb_PhieuNhap_tb_NXB" ManuallyRouted="false" />
-        <AssociationConnector Association="BookShopModel.FK_tb_Sach_tb_NXB" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="BookShopModel.tb_Sach" Width="1.5" PointX="3" PointY="1" />
+        <AssociationConnector Association="BookShopModel.FK_tb_CTPN_tb_Sach" />
+        <AssociationConnector Association="BookShopModel.FK_tb_CTPX_tb_Sach" />
+        <AssociationConnector Association="BookShopModel.FK_tb_Sach_tb_GianHang" />
+        <AssociationConnector Association="BookShopModel.FK_tb_Sach_tb_NXB" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
