@@ -11,7 +11,8 @@ namespace QLSach.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class tb_Sach
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -20,14 +21,21 @@ namespace QLSach.Models
             this.tb_CTPN = new HashSet<tb_CTPN>();
             this.tb_CTPX = new HashSet<tb_CTPX>();
         }
-    
+        [Required]
         public string maSach { get; set; }
+        [Required]
         public string tieuDe { get; set; }
+        [Required]
         public string tacGia { get; set; }
+        [Required]
         public int namXuatBan { get; set; }
+        [Required]
         public int giaBia { get; set; }
+        [Required]
         public string maNXB { get; set; }
+        [Required]
         public int soLuongTon { get; set; }
+        [Required]
         public string maGianHang { get; set; }
         public string anh { get; set; }
     
