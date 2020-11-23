@@ -46,10 +46,10 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="PagedList, Version=1.17.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
@@ -135,6 +135,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\MasterDetailController.cs" />
     <Compile Include="Controllers\tb_GianHangController.cs" />
     <Compile Include="Controllers\tb_NguoiDungController.cs" />
     <Compile Include="Controllers\tb_NXBController.cs" />
@@ -261,6 +262,13 @@
     <Content Include="Theme\corporation\pages\full-width.html" />
     <Content Include="Theme\corporation\pages\index.html" />
     <Content Include="Theme\corporation\pages\style-demo.html" />
+    <Content Include="Theme\Order\Adminp.css" />
+    <Content Include="Theme\Order\bootstrap.css" />
+    <Content Include="Theme\Order\bootstrap.js" />
+    <Content Include="Theme\Order\bootstrap.min.css" />
+    <Content Include="Theme\Order\jquery-1.10.2.js" />
+    <Content Include="Theme\Order\respond.js" />
+    <Content Include="Theme\Order\Site.css" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -297,6 +305,8 @@
     <Content Include="Views\tb_NXB\Index.cshtml" />
     <Content Include="Views\Home\Login.cshtml" />
     <Content Include="Views\Home\View.cshtml" />
+    <Content Include="Views\MasterDetail\Index.cshtml" />
+    <Content Include="Views\Shared\_Layout1.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
