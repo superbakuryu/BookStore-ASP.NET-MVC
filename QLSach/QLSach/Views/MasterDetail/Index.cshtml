@@ -3,16 +3,17 @@
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout1.cshtml";
 }
+<link href="~/Theme/corporation/layout/styles/css-tu-tao.css" type="text/css" />
+<br />
+<br />
 
-<br />
-<br />
 <div class="panel panel-default">
     <div class="panel-heading">
         <div class="row">
             <h2 class="panel-title pull-left" style="margin-left:10px;">
                 <strong style="font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif">Thông tin phiếu nhập</strong>
             </h2>
-            <button style="margin-right:10px" class="btn btn-primary pull-right" onclick="addNewOrder()">New Order</button>
+            <button style="margin-right:10px" class="btn btn-primary pull-right" onclick="addNewOrder()">Thêm hóa đơn   </button>
         </div>
     </div>
 
@@ -58,11 +59,11 @@
                                             <table class="table table-striped css-serial">
                                                 <thead>
                                                     <tr>
-                                                        <th>#</th>
-                                                        <th>Item</th>
-                                                        <th>Quantity</th>
-                                                        <th>Unit Cost</th>
-                                                        <th>Total</th>
+                                                        <th>STT</th>
+                                                        <th>Mã sách</th>
+                                                        <th>Số lượng</th>
+                                                        <th>Đơn giá</th>
+                                                        <th>Thành tiền</th>
                                                         <th></th>
 
                                                     </tr>
@@ -81,14 +82,8 @@
                                                             <td>@order.thanhTien</td>
                                                             <td>@Html.ActionLink(" ", "EditOrder", new { id = @order.maCTPN }, new { @class = "btn btn-warning pull-right  btn-sm glyphicon glyphicon-edit" })</td>
                                                         </tr>
-
                                                     </tbody>
-
-
-
                                                     totalBill = totalBill + @Convert.ToInt32(order.thanhTien);
-
-
                                                 }
 
                                             </table>
@@ -102,7 +97,7 @@
                                                             <tr>
 
                                                                 <td class="left">
-                                                                    <strong>Total Bill:</strong>
+                                                                    <strong>Tổng giá :</strong>
                                                                 </td>
                                                                 <td class="right">
                                                                     <strong>@totalBill VNĐ</strong>
@@ -143,70 +138,71 @@
         <div class="modal-content">
             <div class="modal-header">
                 <a href="#" class="close" data-dismiss="modal">&times;</a>
-                <h4>Add New Order</h4>
+                <h4>Thêm hóa đơn mới</h4>
             </div>
             <form id="NewOrderForm">
                 <div class="modal-body">
                     @*Customer Details*@
-                    <h5 style="color:#ff6347">Customer Details</h5>
+                    <h5 style="color:#ff6347;font-family:Arial">Phiếu nhập</h5>
                     <hr />
                     <div class="form-horizontal">
                         <input type="hidden" id="CustomerId" />
                         <div class="form-group">
                             <label class="control-label col-md-2">
-                                Customer Name
+                                Mã phiếu nhập
                             </label>
                             <div class="col-md-4">
-                                <input type="text" id="name" name="name" placeholder="Customer Name" class="form-control" />
+                                <input type="text" id="name" name="name" placeholder="Mã phiếu nhập" class="form-control" />
                             </div>
                             <label class="control-label col-md-2">
-                                Address
+                                Mã NXB
                             </label>
                             <div class="col-md-4">
-                                <input type="text" id="address" name="address" placeholder="Customer Address" class="form-control" />
+                                <input type="text" id="address" name="address" placeholder="Mã NXB" class="form-control" />
                             </div>
                         </div>
                     </div>
 
                     @*Order Details*@
-                    <h5 style="margin-top:10px;color:#ff6347">Order Details</h5>
+                    <h5 style="margin-top:10px;color:#ff6347;font-family:Arial">Chi tiết phiếu nhập</h5>
                     <hr />
                     <div class="form-horizontal">
                         <input type="hidden" id="OrderId" />
                         <div class="form-group">
                             <label class="control-label col-md-2">
-                                Product Name
+                                Mã sách
                             </label>
                             <div class="col-md-4">
-                                <input type="text" id="productName" name="productName" placeholder="Product Name" class="form-control" />
+                                <input type="text" id="productName" name="productName" placeholder="Mã sách" class="form-control" />
                             </div>
                             <label class="control-label col-md-2">
-                                Price
+                                Đơn giá
                             </label>
                             <div class="col-md-4">
-                                <input type="number" id="price" name="price" placeholder="Product Price" class="form-control" />
+                                <input type="number" id="price" name="price" placeholder="Đơn giá" class="form-control" />
+                                <input type="hidden" id="hfCustomer" name="CustomerId" />
                             </div>
                         </div>
 
                         <div class="form-group">
                             <label class="control-label col-md-2">
-                                Quantity
+                                Số lượng
                             </label>
                             <div class="col-md-4">
-                                <input type="number" id="quantity" name="quantity" placeholder="Quantity" class="form-control" />
+                                <input type="number" id="quantity" name="quantity" placeholder="Số lượng" class="form-control" />
                             </div>
                             <div class="col-md-2">
-                                <a id="addToList" class="btn btn-primary">Add To List</a>
+                                <a id="addToList" class="btn btn-primary">Thêm vào danh sách</a>
                             </div>
                         </div>
 
                         <table id="detailsTable" class="table">
                             <thead>
                                 <tr>
-                                    <th style="width:30%">Product</th>
-                                    <th style="width:10%">Qty</th>
-                                    <th style="width:25%">Unit Cost</th>
-                                    <th style="width:25%">Amount</th>
+                                    <th style="width:30%">Mã sách</th>
+                                    <th style="width:10%">Số lượng</th>
+                                    <th style="width:25%">Đơn giá</th>
+                                    <th style="width:25%">Thành tiền</th>
                                     <th style="width:10%"></th>
                                 </tr>
                             </thead>
@@ -215,8 +211,8 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="reset" class="btn btn-default" data-dismiss="modal">Close</button>
-                    <button id="saveOrder" type="submit" class="btn btn-danger">Save Order</button>
+                    <button type="reset" class="btn btn-default" data-dismiss="modal">Đóng</button>
+                    <button id="saveOrder" type="submit" class="btn btn-danger">Lưu lại</button>
                 </div>
             </form>
         </div>
@@ -224,6 +220,7 @@
 </div>
 
 @section scripts{
+
     <script>
         //Show Modal.
         function addNewOrder() {
@@ -240,7 +237,7 @@
                 quantity = $("#quantity").val(),
                 detailsTableBody = $("#detailsTable tbody");
 
-            var productItem = '<tr><td>' + productName + '</td><td>' + quantity + '</td><td>' + price + '</td><td>' + (parseFloat(price) * parseInt(quantity)) + '</td><td><a data-itemId="0" href="#" class="deleteItem">Remove</a></td></tr>';
+            var productItem = '<tr><td>' + productName + '</td><td>' + quantity + '</td><td>' + price + '</td><td>' + (parseFloat(price) * parseInt(quantity)) + '</td><td><a data-itemId="0" href="#" class="deleteItem">Xóa</a></td></tr>';
             detailsTableBody.append(productItem);
             clearItem();
         });
@@ -306,13 +303,9 @@
                 console.log(err);
             });
         });
-
-
-
-
-
     </script>
 }
+
 <style>
     .css-serial {
         counter-reset: serial-number; /* Set the serial number counter to 0 */
