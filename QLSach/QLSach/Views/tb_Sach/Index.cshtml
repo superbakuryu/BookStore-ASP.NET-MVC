@@ -79,7 +79,21 @@
             </th>
             <th>
                 @*@Html.DisplayNameFor(model => model.soLuongTon)*@
-                Số lượng tồn
+                <div style="display:flex">
+                    <div>
+                        @Html.ActionLink("Số lượng tồn", "Index", new { sortOrder = ViewBag.SoLuongSortParm, currentFilter = ViewBag.CurrentFilter }, new { @class = "sapxep" })
+                    </div>
+                    <div style="margin-left:10px">
+                        @if (ViewBag.SoLuongSortParm == null || ViewBag.SoLuongSortParm == "soluong")
+                        {
+                            <i class="fa fa-sort-asc" style="font-size:24px"></i>
+                        }
+                        else
+                        {
+                            <i class="fa fa-sort-desc" style="font-size:24px"></i>
+                        }
+                    </div>
+                </div>
             </th>
             <th>
                 @*@Html.DisplayNameFor(model => model.tb_GianHang.tenGianHang)*@

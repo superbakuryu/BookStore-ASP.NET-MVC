@@ -139,6 +139,7 @@
     <Compile Include="Controllers\tb_GianHangController.cs" />
     <Compile Include="Controllers\tb_NguoiDungController.cs" />
     <Compile Include="Controllers\tb_NXBController.cs" />
+    <Compile Include="Controllers\tb_PhieuXuatController.cs" />
     <Compile Include="Controllers\tb_SachController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -254,6 +255,26 @@
     <Content Include="Theme\corporation\pages\full-width.html" />
     <Content Include="Theme\corporation\pages\index.html" />
     <Content Include="Theme\corporation\pages\style-demo.html" />
+    <Content Include="Theme\easion\css\demo.css" />
+    <Content Include="Theme\easion\css\demo.min.css" />
+    <Content Include="Theme\easion\css\easion.css" />
+    <Content Include="Theme\easion\css\easion.min.css" />
+    <Content Include="Theme\easion\html\blank.html" />
+    <Content Include="Theme\easion\html\cards.html" />
+    <Content Include="Theme\easion\html\chartjs.html" />
+    <Content Include="Theme\easion\html\content.html" />
+    <Content Include="Theme\easion\html\forms.html" />
+    <Content Include="Theme\easion\html\icons.html" />
+    <Content Include="Theme\easion\html\index.html" />
+    <Content Include="Theme\easion\html\login.html" />
+    <Content Include="Theme\easion\html\signup.html" />
+    <Content Include="Theme\easion\html\stats.html" />
+    <Content Include="Theme\easion\html\tables.html" />
+    <Content Include="Theme\easion\html\typography.html" />
+    <Content Include="Theme\easion\html\userinterface.html" />
+    <Content Include="Theme\easion\index.html" />
+    <Content Include="Theme\easion\js\chart-js-config.js" />
+    <Content Include="Theme\easion\js\easion.js" />
     <Content Include="Theme\Order\Adminp.css" />
     <Content Include="Theme\Order\bootstrap.css" />
     <Content Include="Theme\Order\bootstrap.js" />
@@ -299,6 +320,11 @@
     <Content Include="Views\MasterDetail\Index.cshtml" />
     <Content Include="Views\Shared\_Layout1.cshtml" />
     <Content Include="Views\Shared\_LayoutAutoComplete.cshtml" />
+    <Content Include="Views\tb_PhieuXuat\Create.cshtml" />
+    <Content Include="Views\tb_PhieuXuat\Delete.cshtml" />
+    <Content Include="Views\tb_PhieuXuat\Details.cshtml" />
+    <Content Include="Views\tb_PhieuXuat\Edit.cshtml" />
+    <Content Include="Views\tb_PhieuXuat\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

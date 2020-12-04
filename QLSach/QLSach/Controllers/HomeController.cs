@@ -14,7 +14,12 @@ namespace QLSach.Controllers
         public ActionResult Index()
         {
             if (Session["TaiKhoan"] != null)
-                return View();
+            {
+                var item = from p in db.tb_Sach
+                           orderby p.soLuongTon descending
+                           select p;
+                return View(item);
+            }
             return Redirect("~/Home/Login");
         }
         [HttpGet]
@@ -43,15 +48,12 @@ namespace QLSach.Controllers
             return Redirect("Login");
         }
 
-        [HttpPost]
+        [HttpGet]
         public JsonResult GetSearchValue(string search)
         {
-            List<tb_Sach> allsearch = db.tb_Sach.Where(x => x.maSach.Contains(search)).Select(x => new tb_Sach
-            {
-                maSach = x.maSach,
-                tieuDe = x.tieuDe
-            }).ToList();
-            return new JsonResult { Data = allsearch, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
+            var allsearch = db.tb_Sach.Where(x => x.maSach.Contains(search)).ToList();
+            SelectList ls = new SelectList(allsearch, "maSach", "tieuDe");
+            return new JsonResult { Data = ls, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
         }
         public ActionResult About()
         {

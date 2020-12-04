@@ -22,6 +22,7 @@ namespace QLSach.Controllers
             ViewBag.CurrentSort = sortOrder;
             ViewBag.MaSortParm = sortOrder == "ma"? "ma_desc" : "ma";
             ViewBag.TenSortParm = sortOrder == "ten" ? "ten_desc" : "ten";
+            ViewBag.SoLuongSortParm = sortOrder == "soluong" ? "soluong_desc" : "soluong";
 
             if (searchString != null)
             {
@@ -50,6 +51,12 @@ namespace QLSach.Controllers
                     break;
                 case "ten_desc":
                     models = models.OrderByDescending(s => s.tieuDe);
+                    break;
+                case "soluong":
+                    models = models.OrderBy(s => s.soLuongTon);
+                    break;
+                case "soluong_desc":
+                    models = models.OrderByDescending(s => s.soLuongTon);
                     break;
                 default:
                     models = models.OrderBy(s => s.maSach);

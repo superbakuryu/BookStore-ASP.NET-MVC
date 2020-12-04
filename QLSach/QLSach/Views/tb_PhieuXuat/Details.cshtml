@@ -1,0 +1,43 @@
+﻿@model QLSach.Models.tb_PhieuXuat
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>tb_PhieuXuat</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.tenKH)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tenKH)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ngayXuat)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ngayXuat)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.thanhTien)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.thanhTien)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.maPhieuXuat }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

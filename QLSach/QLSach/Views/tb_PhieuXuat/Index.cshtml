@@ -1,0 +1,46 @@
+﻿@model IEnumerable<QLSach.Models.tb_PhieuXuat>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.tenKH)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ngayXuat)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.thanhTien)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.tenKH)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ngayXuat)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.thanhTien)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.maPhieuXuat }) |
+            @Html.ActionLink("Details", "Details", new { id=item.maPhieuXuat }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.maPhieuXuat })
+        </td>
+    </tr>
+}
+
+</table>
