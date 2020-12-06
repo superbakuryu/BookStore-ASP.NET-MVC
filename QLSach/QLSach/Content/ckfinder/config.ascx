@@ -17,7 +17,7 @@
 		// ... where Session[ "IsAuthorized" ] is set to "true" as soon as the
 		// user logs on your system.
 
-		return false;
+		return true;
 	}
 
 	/**
@@ -27,15 +27,15 @@
 	{
 		// Paste your license name and key here. If left blank, CKFinder will
 		// be fully functional, in Demo Mode.
-		LicenseName = "";
-		LicenseKey = "";
+		LicenseName = "localhost";
+		LicenseKey = "AC1M6WAJB8GBM3U8LK3MLQTM4G4HA6NP";
 
 		// The base URL used to reach files in CKFinder through the browser.
-		BaseUrl = "/ckfinder/userfiles/";
+		BaseUrl = "/Anh/";
 
 		// The phisical directory in the server where the file will end up. If
 		// blank, CKFinder attempts to resolve BaseUrl.
-		BaseDir = "";
+		BaseDir = HttpContext.Current.Server.MapPath("~/Anh/");
 
 		// Optional: enable extra plugins (remember to copy .dll files first).
 		Plugins = new string[] {

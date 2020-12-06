@@ -11,7 +11,8 @@ namespace QLSach.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.Web.Mvc;
+
     public partial class tb_Sach
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -29,6 +30,7 @@ namespace QLSach.Models
         public int soLuongTon { get; set; }
         public string maGianHang { get; set; }
         public string anh { get; set; }
+        [AllowHtml]
         public string moTa { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

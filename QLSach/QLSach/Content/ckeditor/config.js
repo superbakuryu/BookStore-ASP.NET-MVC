@@ -7,7 +7,17 @@ CKEDITOR.editorConfig = function( config ) {
 	// Define changes to default configuration here.
 	// For complete reference see:
 	// https://ckeditor.com/docs/ckeditor4/latest/api/CKEDITOR_config.html
+	config.syntaxhighlight_lang = 'csharp';
+    config.syntaxhighlight_hideControls = true;
+    config.languages = 'vi';
+    config.filebrowserBrowseUrl = '/Content/ckfinder/ckfinder.html';
+    config.filebrowserImageBrowseUrl = '/Content/ckfinder/ckfinder.html?Types=Images';
+    config.filebrowserFlashBrowseUrl = '/Content/ckfinder/ckfinder.html?Types=Flash';
+    config.filebrowserUploadUrl = '/Content/ckfinder/core/connector/aspx/connector.aspx?command=QuickUpload&type=File';
+    config.filebrowserImageUploadUrl = '/Content/Admin/Data';
+    config.filebrowserFlashUploadUrl = '/Content/ckfinder/core/connector/aspx/connector.aspx?command=QuickUpload&type=Flash';
 
+    CKFinder.setupCKEditor(null, '/Content/ckfinder/');
 	// The toolbar groups arrangement, optimized for two toolbar rows.
 	config.toolbarGroups = [
 		{ name: 'clipboard',   groups: [ 'clipboard', 'undo' ] },

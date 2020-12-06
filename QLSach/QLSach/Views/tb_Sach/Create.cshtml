@@ -10,7 +10,7 @@
 @using (Html.BeginForm("Create", "tb_Sach", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
-    
+
 <div class="form-horizontal">
     <h4>Thông tin sách</h4>
     <hr />
@@ -95,10 +95,24 @@
     </div>
 
     <div class="form-group">
+        <div class="control-label col-md-2">
+            Tải ảnh sử dụng CKFINDER
+        </div>
+        <div>
+            <input type="text" id="linkImg" disabled />
+            <button type="button" id="selectImg">Chọn ảnh</button>
+        </div>
+        
+    </div>
+    <div class="form-group">
         <div class="col-md-offset-2 col-md-10">
-            <input type="submit" value="Thêm" class="btn btn-default" />
+            <input type="submit" id="send" value="Thêm" class="btn btn-default" />
         </div>
     </div>
+
+    @*<div>
+            <input id="send" type="button" value="Kiểm tra">
+        </div>*@
 </div>
 }
 
@@ -109,3 +123,24 @@
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
 }
+<script src="~/Scripts/jquery-3.4.1.js"></script>
+<script src="~/Content/ckeditor/ckeditor.js"></script>
+<script src="~/Content/ckfinder/ckfinder.js"></script>
+<script>
+    $(document).ready(function () {
+        CKEDITOR.replace("moTa");
+    });
+    $('#selectImg').click(function () {
+        var finder = new CKFinder();
+        finder.selectActionFunction = function (fileUrl) {
+            $('#linkImg').val(fileUrl);
+        };
+        finder.popup();
+    });
+    $('#send').click(function () {
+        var value = CKEDITOR.instances['moTa'].getData();
+        // send your ajax request with value
+        // profit!
+        moTa.value = value;
+    });
+</script>

@@ -93,8 +93,10 @@ namespace QLSach.Controllers
         // POST: tb_Sach/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+
         [HttpPost]
         [ValidateAntiForgeryToken]
+        //[HttpPost, ValidateInput(false)]
         public ActionResult Create(HttpPostedFileBase anh, [Bind(Include = "maSach,tieuDe,tacGia,namXuatBan,giaBia,maNXB,soLuongTon,maGianHang,moTa")] tb_Sach tb_Sach)
         {
             if(anh!=null)
