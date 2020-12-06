@@ -18,7 +18,6 @@
         <AssociationConnector Association="BookShopModel.FK_tb_PhieuNhap_tb_NXB" ManuallyRouted="false" />
         <EntityTypeShape EntityType="BookShopModel.tb_Sach" Width="1.5" PointX="3" PointY="1" />
         <AssociationConnector Association="BookShopModel.FK_tb_CTPN_tb_Sach" />
-        <AssociationConnector Association="BookShopModel.FK_tb_CTPX_tb_Sach" />
         <AssociationConnector Association="BookShopModel.FK_tb_Sach_tb_GianHang" />
         <AssociationConnector Association="BookShopModel.FK_tb_Sach_tb_NXB" />
       </Diagram>

@@ -21,6 +21,5 @@ namespace QLSach.Models
         public long thanhTien { get; set; }
     
         public virtual tb_PhieuXuat tb_PhieuXuat { get; set; }
-        public virtual tb_Sach tb_Sach { get; set; }
     }
 }

@@ -107,48 +107,56 @@
                 @*@Html.DisplayNameFor(model => model.tb_NXB.tenNXB)*@
                 Ảnh
             </th>
+            <th>
+                @*@Html.DisplayNameFor(model => model.tb_NXB.tenNXB)*@
+                Mô tả
+            </th>
+
             <th><center>Thao tác</center></th>
         </tr>
     </thead>
     <tbody>
         @foreach (var item in Model)
         {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.maSach)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.tieuDe)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.tacGia)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.namXuatBan)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.giaBia)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.soLuongTon)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.tb_GianHang.tenGianHang)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.tb_NXB.tenNXB)
-                </td>
-                <td>
-                    <img src="~/Anh/@item.anh" width="60px" />
-                </td>
-                <td>
-                    <center>
-                        @Html.ActionLink("Sửa", "Edit", new { id = item.maSach }, new { @class = "btn btn--border btn--primary btn--animated" })
-                        @Html.ActionLink("Chi tiết", "Details", new { id = item.maSach }, new { @class = "btn btn--border btn--primary btn--animated" })
-                        @Html.ActionLink("Xóa", "Delete", new { id = item.maSach }, new { @class = "btn btn--border btn--primary btn--animated" })
-                    </center>
-                </td>
-            </tr>
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.maSach)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.tieuDe)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.tacGia)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.namXuatBan)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.giaBia)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.soLuongTon)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.tb_GianHang.tenGianHang)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.tb_NXB.tenNXB)
+            </td>
+            <td>
+                <img src="~/Anh/@item.anh" width="60px" />
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.moTa)
+            </td>
+            <td>
+                <center>
+                    @Html.ActionLink("Sửa", "Edit", new { id = item.maSach }, new { @class = "btn btn--border btn--primary btn--animated" })
+                    @Html.ActionLink("Chi tiết", "Details", new { id = item.maSach }, new { @class = "btn btn--border btn--primary btn--animated" })
+                    @Html.ActionLink("Xóa", "Delete", new { id = item.maSach }, new { @class = "btn btn--border btn--primary btn--animated" })
+                </center>
+            </td>
+        </tr>
         }
     </tbody>
 

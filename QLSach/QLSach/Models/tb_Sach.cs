@@ -11,38 +11,28 @@ namespace QLSach.Models
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-
+    
     public partial class tb_Sach
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public tb_Sach()
         {
             this.tb_CTPN = new HashSet<tb_CTPN>();
-            this.tb_CTPX = new HashSet<tb_CTPX>();
         }
-        [Required]
+    
         public string maSach { get; set; }
-        [Required]
         public string tieuDe { get; set; }
-        [Required]
         public string tacGia { get; set; }
-        [Required]
         public int namXuatBan { get; set; }
-        [Required]
         public int giaBia { get; set; }
-        [Required]
         public string maNXB { get; set; }
-        [Required]
         public int soLuongTon { get; set; }
-        [Required]
         public string maGianHang { get; set; }
         public string anh { get; set; }
+        public string moTa { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tb_CTPN> tb_CTPN { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<tb_CTPX> tb_CTPX { get; set; }
         public virtual tb_GianHang tb_GianHang { get; set; }
         public virtual tb_NXB tb_NXB { get; set; }
     }

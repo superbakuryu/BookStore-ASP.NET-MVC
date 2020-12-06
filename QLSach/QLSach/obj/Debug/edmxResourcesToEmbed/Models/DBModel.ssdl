@@ -85,8 +85,9 @@
     <Property Name="giaBia" Type="int" Nullable="false" />
     <Property Name="maNXB" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="soLuongTon" Type="int" Nullable="false" />
-    <Property Name="maGianHang" Type="nvarchar" MaxLength="50" />
-    <Property Name="anh" Type="nvarchar" MaxLength="200" />
+    <Property Name="maGianHang" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="anh" Type="nvarchar" MaxLength="200" Nullable="false" />
+    <Property Name="moTa" Type="nvarchar(max)" Nullable="false" />
   </EntityType>
   <Association Name="FK_tb_CTPN_tb_PhieuNhap">
     <End Role="tb_PhieuNhap" Type="Self.tb_PhieuNhap" Multiplicity="1" />
@@ -112,30 +113,6 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_tb_CTPX_tb_PhieuXuat">
-    <End Role="tb_PhieuXuat" Type="Self.tb_PhieuXuat" Multiplicity="1" />
-    <End Role="tb_CTPX" Type="Self.tb_CTPX" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="tb_PhieuXuat">
-        <PropertyRef Name="maPhieuXuat" />
-      </Principal>
-      <Dependent Role="tb_CTPX">
-        <PropertyRef Name="maPhieuXuat" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_tb_CTPX_tb_Sach">
-    <End Role="tb_Sach" Type="Self.tb_Sach" Multiplicity="1" />
-    <End Role="tb_CTPX" Type="Self.tb_CTPX" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="tb_Sach">
-        <PropertyRef Name="maSach" />
-      </Principal>
-      <Dependent Role="tb_CTPX">
-        <PropertyRef Name="maSach" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="FK_tb_PhieuNhap_tb_NXB">
     <End Role="tb_NXB" Type="Self.tb_NXB" Multiplicity="1" />
     <End Role="tb_PhieuNhap" Type="Self.tb_PhieuNhap" Multiplicity="*" />
@@ -149,7 +126,7 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_tb_Sach_tb_GianHang">
-    <End Role="tb_GianHang" Type="Self.tb_GianHang" Multiplicity="0..1" />
+    <End Role="tb_GianHang" Type="Self.tb_GianHang" Multiplicity="1" />
     <End Role="tb_Sach" Type="Self.tb_Sach" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="tb_GianHang">
@@ -189,14 +166,6 @@
     <AssociationSet Name="FK_tb_CTPN_tb_Sach" Association="Self.FK_tb_CTPN_tb_Sach">
       <End Role="tb_Sach" EntitySet="tb_Sach" />
       <End Role="tb_CTPN" EntitySet="tb_CTPN" />
-    </AssociationSet>
-    <AssociationSet Name="FK_tb_CTPX_tb_PhieuXuat" Association="Self.FK_tb_CTPX_tb_PhieuXuat">
-      <End Role="tb_PhieuXuat" EntitySet="tb_PhieuXuat" />
-      <End Role="tb_CTPX" EntitySet="tb_CTPX" />
-    </AssociationSet>
-    <AssociationSet Name="FK_tb_CTPX_tb_Sach" Association="Self.FK_tb_CTPX_tb_Sach">
-      <End Role="tb_Sach" EntitySet="tb_Sach" />
-      <End Role="tb_CTPX" EntitySet="tb_CTPX" />
     </AssociationSet>
     <AssociationSet Name="FK_tb_PhieuNhap_tb_NXB" Association="Self.FK_tb_PhieuNhap_tb_NXB">
       <End Role="tb_NXB" EntitySet="tb_NXB" />

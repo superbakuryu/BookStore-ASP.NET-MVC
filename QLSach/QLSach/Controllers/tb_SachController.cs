@@ -95,7 +95,7 @@ namespace QLSach.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(HttpPostedFileBase anh, [Bind(Include = "maSach,tieuDe,tacGia,namXuatBan,giaBia,maNXB,soLuongTon,maGianHang")] tb_Sach tb_Sach)
+        public ActionResult Create(HttpPostedFileBase anh, [Bind(Include = "maSach,tieuDe,tacGia,namXuatBan,giaBia,maNXB,soLuongTon,maGianHang,moTa")] tb_Sach tb_Sach)
         {
             if(anh!=null)
             {

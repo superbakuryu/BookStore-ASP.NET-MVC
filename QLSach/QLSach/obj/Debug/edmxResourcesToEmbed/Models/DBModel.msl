@@ -86,6 +86,7 @@
     <EntitySetMapping Name="tb_Sach">
       <EntityTypeMapping TypeName="BookShopModel.tb_Sach">
         <MappingFragment StoreEntitySet="tb_Sach">
+          <ScalarProperty Name="moTa" ColumnName="moTa" />
           <ScalarProperty Name="anh" ColumnName="anh" />
           <ScalarProperty Name="maGianHang" ColumnName="maGianHang" />
           <ScalarProperty Name="soLuongTon" ColumnName="soLuongTon" />

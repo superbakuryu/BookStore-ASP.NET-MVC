@@ -33,7 +33,6 @@
     <Property Name="soLuong" Type="Int32" Nullable="false" />
     <Property Name="thanhTien" Type="Int64" Nullable="false" />
     <NavigationProperty Name="tb_PhieuXuat" Relationship="Self.FK_tb_CTPX_tb_PhieuXuat" FromRole="tb_CTPX" ToRole="tb_PhieuXuat" />
-    <NavigationProperty Name="tb_Sach" Relationship="BookShopModel.FK_tb_CTPX_tb_Sach" FromRole="tb_CTPX" ToRole="tb_Sach" />
   </EntityType>
   <EntityType Name="tb_GianHang">
     <Key>
@@ -146,10 +145,6 @@
       <End Role="tb_Sach" EntitySet="tb_Sach" />
       <End Role="tb_CTPN" EntitySet="tb_CTPN" />
     </AssociationSet>
-    <AssociationSet Name="FK_tb_CTPX_tb_Sach" Association="BookShopModel.FK_tb_CTPX_tb_Sach">
-      <End Role="tb_Sach" EntitySet="tb_Sach" />
-      <End Role="tb_CTPX" EntitySet="tb_CTPX" />
-    </AssociationSet>
     <AssociationSet Name="FK_tb_Sach_tb_GianHang" Association="BookShopModel.FK_tb_Sach_tb_GianHang">
       <End Role="tb_GianHang" EntitySet="tb_GianHang" />
       <End Role="tb_Sach" EntitySet="tb_Sach" />
@@ -170,10 +165,10 @@
     <Property Name="giaBia" Type="Int32" Nullable="false" />
     <Property Name="maNXB" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="soLuongTon" Type="Int32" Nullable="false" />
-    <Property Name="maGianHang" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="anh" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="maGianHang" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="anh" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="moTa" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
     <NavigationProperty Name="tb_CTPN" Relationship="BookShopModel.FK_tb_CTPN_tb_Sach" FromRole="tb_Sach" ToRole="tb_CTPN" />
-    <NavigationProperty Name="tb_CTPX" Relationship="BookShopModel.FK_tb_CTPX_tb_Sach" FromRole="tb_Sach" ToRole="tb_CTPX" />
     <NavigationProperty Name="tb_GianHang" Relationship="BookShopModel.FK_tb_Sach_tb_GianHang" FromRole="tb_Sach" ToRole="tb_GianHang" />
     <NavigationProperty Name="tb_NXB" Relationship="BookShopModel.FK_tb_Sach_tb_NXB" FromRole="tb_Sach" ToRole="tb_NXB" />
   </EntityType>
@@ -189,20 +184,8 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_tb_CTPX_tb_Sach">
-    <End Type="BookShopModel.tb_Sach" Role="tb_Sach" Multiplicity="1" />
-    <End Type="BookShopModel.tb_CTPX" Role="tb_CTPX" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="tb_Sach">
-        <PropertyRef Name="maSach" />
-      </Principal>
-      <Dependent Role="tb_CTPX">
-        <PropertyRef Name="maSach" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="FK_tb_Sach_tb_GianHang">
-    <End Type="BookShopModel.tb_GianHang" Role="tb_GianHang" Multiplicity="0..1" />
+    <End Type="BookShopModel.tb_GianHang" Role="tb_GianHang" Multiplicity="1" />
     <End Type="BookShopModel.tb_Sach" Role="tb_Sach" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="tb_GianHang">
