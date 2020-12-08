@@ -7,85 +7,103 @@
 <h2>SỬA</h2>
 
 
-@using (Html.BeginForm("Edit","tb_Sach",FormMethod.Post,new { enctype = "multipart/form-data" }))
+@using (Html.BeginForm("Edit", "tb_Sach", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
-    
-<div class="form-horizontal">
-    <h4>Thông tin sách:</h4>
-    <hr />
-    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-    @Html.HiddenFor(model => model.maSach)
 
-    <div class="form-group">
-        @Html.LabelFor(model => model.tieuDe, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.tieuDe, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.tieuDe, "", new { @class = "text-danger" })
+    <div class="form-horizontal">
+        <h4>Thông tin sách:</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.maSach)
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.tieuDe, "Tiêu đề", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.tieuDe, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.tieuDe, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.tacGia, "Tác giả", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.tacGia, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.tacGia, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.namXuatBan, "Năm xuất bản", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.namXuatBan, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.namXuatBan, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.giaBia, "Giá bìa", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.giaBia, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.giaBia, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.maNXB, "Mã NXB", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("maNXB", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.maNXB, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.soLuongTon, "Số lượng tồn", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.soLuongTon, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.soLuongTon, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.maGianHang, "Mã gian hàng", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("maGianHang", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.maGianHang, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            Tải ảnh lên
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.anh, new { htmlAttributes = new { @class = "form-control", @type = "file" } })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.moTa, "Mô tả", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.moTa, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.moTa, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="control-label col-md-2">
+                Tải ảnh sử dụng CKFINDER
+            </div>
+            <div>
+                <input type="text" id="linkImg" disabled />
+                <button type="button" id="selectImg">Chọn ảnh</button>
+            </div>
+
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" id="send" value="Thêm" class="btn btn-default" />
+            </div>
         </div>
     </div>
-
-    <div class="form-group">
-        @Html.LabelFor(model => model.tacGia, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.tacGia, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.tacGia, "", new { @class = "text-danger" })
-        </div>
-    </div>
-
-    <div class="form-group">
-        @Html.LabelFor(model => model.namXuatBan, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.namXuatBan, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.namXuatBan, "", new { @class = "text-danger" })
-        </div>
-    </div>
-
-    <div class="form-group">
-        @Html.LabelFor(model => model.giaBia, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.giaBia, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.giaBia, "", new { @class = "text-danger" })
-        </div>
-    </div>
-
-    <div class="form-group">
-        @Html.LabelFor(model => model.maNXB, "maNXB", htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.DropDownList("maNXB", null, htmlAttributes: new { @class = "form-control" })
-            @Html.ValidationMessageFor(model => model.maNXB, "", new { @class = "text-danger" })
-        </div>
-    </div>
-
-    <div class="form-group">
-        @Html.LabelFor(model => model.soLuongTon, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.soLuongTon, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.soLuongTon, "", new { @class = "text-danger" })
-        </div>
-    </div>
-
-    <div class="form-group">
-        @Html.LabelFor(model => model.maGianHang, "maGianHang", htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.DropDownList("maGianHang", null, htmlAttributes: new { @class = "form-control" })
-            @Html.ValidationMessageFor(model => model.maGianHang, "", new { @class = "text-danger" })
-        </div>
-    </div>
-
-    <div class="form-group">
-        Tải ảnh lên
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.anh, new { htmlAttributes = new { @class = "form-control", @type = "file" } })
-        </div>
-    </div>
-
-    <div class="form-group">
-        <div class="col-md-offset-2 col-md-10">
-            <input type="submit" value="Lưu" class="btn btn-default" />
-        </div>
-    </div>
-</div>
 }
 
 <div>
@@ -95,3 +113,24 @@
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
 }
+<script src="~/Scripts/jquery-3.4.1.js"></script>
+<script src="~/Content/ckeditor/ckeditor.js"></script>
+<script src="~/Content/ckfinder/ckfinder.js"></script>
+<script>
+    $(document).ready(function () {
+        CKEDITOR.replace("moTa");
+    });
+    $('#selectImg').click(function () {
+        var finder = new CKFinder();
+        finder.selectActionFunction = function (fileUrl) {
+            $('#linkImg').val(fileUrl);
+        };
+        finder.popup();
+    });
+    $('#send').click(function () {
+        var value = CKEDITOR.instances['moTa'].getData();
+        // send your ajax request with value
+        // profit!
+        moTa.value = value;
+    });
+</script>

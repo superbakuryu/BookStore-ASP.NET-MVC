@@ -9,81 +9,92 @@
 <div>
     <h4>Thông tin sách</h4>
     <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @*@Html.DisplayNameFor(model => model.tieuDe)*@
-            Tiêu đề:
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.tieuDe)
-        </dd>
-
-        <dt>
-            @*@Html.DisplayNameFor(model => model.tacGia)*@
-            Tác giả:
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.tacGia)
-        </dd>
-
-        <dt>
-            @*@Html.DisplayNameFor(model => model.namXuatBan)*@
-            Năm xuất bản:
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.namXuatBan)
-        </dd>
-
-        <dt>
-            @*@Html.DisplayNameFor(model => model.giaBia)*@
-            Giá bìa:
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.giaBia)
-        </dd>
-
-        <dt>
-            @*@Html.DisplayNameFor(model => model.soLuongTon)*@
-            Số lượng tồn:
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.soLuongTon)
-        </dd>
-
-        <dt>
-            @*@Html.DisplayNameFor(model => model.tb_GianHang.tenGianHang)*@
-            Tên gian hàng:
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.tb_GianHang.tenGianHang)
-        </dd>
-
-        <dt>
-            @*@Html.DisplayNameFor(model => model.tb_NXB.tenNXB)*@
-            Tên nhà xuất bản:
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.tb_NXB.tenNXB)
-        </dd>
-
-        <dt>
-            @*@Html.DisplayNameFor(model => model.tb_NXB.tenNXB)*@
-            Mô tả
-        </dt>
-
-        <dd>
-            @Html.DisplayTextFor(model => model.moTa)
-        </dd>
-    </dl>
 </div>
+<link href="~/Theme/corporation/layout/styles/chi-tiet-san-pham.css" rel="stylesheet" />
+
+<main class="container">
+
+    <!-- Left Column / Headphones Image -->
+    <div class="left-column">
+        <img data-image="black" src="https://www.thuthuatweb.net/demo/product-page-css3-jquery/images/black.png"
+             alt="">
+        <img data-image="blue" src="https://www.thuthuatweb.net/demo/product-page-css3-jquery/images/blue.png"
+             alt="">
+        <img data-image="red" class="active"
+             src="~/Anh/@Model.anh" alt="">
+    </div>
+
+
+    <!-- Right Column -->
+    <div class="right-column">
+
+        <!-- Product Description -->
+        <div class="product-description">
+            <span style="font-size:larger">@Html.DisplayFor(model => model.maSach)</span>
+            <h1>@Html.DisplayFor(model => model.tieuDe)</h1>
+            <p>
+                @Html.DisplayFor(model => model.moTa)
+            </p>
+            <p><strong>Tác giả: </strong>@Html.DisplayFor(model => model.tacGia)</p>
+            <p><strong>Năm xuất bản: </strong>@Html.DisplayFor(model => model.namXuatBan)</p>
+            <p><strong>Số lượng tồn: </strong>@Html.DisplayFor(model => model.soLuongTon)</p>
+            <p><strong>Nhà xuất bản: </strong>@Html.DisplayFor(model => model.tb_NXB.tenNXB)</p>
+        </div>
+        <!-- Product Configuration -->
+        <div class="product-configuration">
+
+            <!-- Product Color -->
+            @*<div class="product-color">
+                <span>Color</span>
+
+                <div class="color-choose">
+                    <div>
+                        <input data-image="red" type="radio" id="red" name="color" value="red" checked>
+                        <label for="red"><span></span></label>
+                    </div>
+                    <div>
+                        <input data-image="blue" type="radio" id="blue" name="color" value="blue">
+                        <label for="blue"><span></span></label>
+                    </div>
+                    <div>
+                        <input data-image="black" type="radio" id="black" name="color" value="black">
+                        <label for="black"><span></span></label>
+                    </div>
+                </div>
+            </div>*@
+
+            <!-- Cable Configuration -->
+            <div class="cable-config">
+                <span style="font-weight:bolder;font-size:20px">Số lượng tồn</span>
+
+                <div class="cable-choose">
+                    <button>@Html.DisplayFor(model => model.soLuongTon)</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Product Pricing -->
+        <div class="product-price">
+            <span><strong>Giá :</strong> @Html.DisplayFor(model => model.giaBia) VNĐ</span>
+        </div>
+    </div>
+</main>
+<hr />
 <p>
     @Html.ActionLink("Sửa", "Edit", new { id = Model.maSach }) |
     @Html.ActionLink("Quay lại", "Index")
 </p>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js" charset="utf-8"></script>
+<script>
+    $(document).ready(function () {
+
+        $('.color-choose input').on('click', function () {
+            var headphonesColor = $(this).attr('data-image');
+
+            $('.active').removeClass('active');
+            $('.left-column img[data-image = ' + headphonesColor + ']').addClass('active');
+            $(this).addClass('active');
+        });
+
+    });
+</script>

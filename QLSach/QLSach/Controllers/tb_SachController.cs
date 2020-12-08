@@ -137,9 +137,11 @@ namespace QLSach.Controllers
         // POST: tb_Sach/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit(HttpPostedFileBase anh, [Bind(Include = "maSach,tieuDe,tacGia,namXuatBan,giaBia,maNXB,soLuongTon,maGianHang")] tb_Sach tb_Sach)
+        //[HttpPost]
+        //[ValidateAntiForgeryToken]
+
+        [HttpPost, ValidateInput(false)]  //Không cho validate dữ liệu
+        public ActionResult Edit(HttpPostedFileBase anh, tb_Sach tb_Sach)
         {
             if (anh != null)
             {
