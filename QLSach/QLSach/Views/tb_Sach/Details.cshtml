@@ -33,7 +33,7 @@
             <span style="font-size:larger">@Html.DisplayFor(model => model.maSach)</span>
             <h1>@Html.DisplayFor(model => model.tieuDe)</h1>
             <p>
-                @Html.DisplayFor(model => model.moTa)
+                @Html.Raw(Model.moTa)
             </p>
             <p><strong>Tác giả: </strong>@Html.DisplayFor(model => model.tacGia)</p>
             <p><strong>Năm xuất bản: </strong>@Html.DisplayFor(model => model.namXuatBan)</p>

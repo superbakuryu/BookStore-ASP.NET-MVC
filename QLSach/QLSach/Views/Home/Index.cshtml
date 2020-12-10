@@ -3,21 +3,26 @@
     ViewBag.Title = "Home Page";
 }
 
-<script src="https://code.jquery.com/jquery-1.10.2.min.js" integrity="sha256-C6CB9UYIS9UJeqinPHWTHVqh/E1uhG5Twh+Y5qFQmYg=" crossorigin="anonymous"></script>
-<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
+@*AUTOCOMPLETE*@
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<link href="~/Content/jquery-ui.css" rel="stylesheet" />
+<script src="~/Scripts/jquery-ui.js"></script>
+
+@*CHART*@
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
 <link href="https://fonts.googleapis.com/css?family=Nunito:400,600|Open+Sans:400,600,700" rel="stylesheet">
 <link rel="stylesheet" href="~/Theme/easion/css/easion.css">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.bundle.min.js"></script>
+<script src="~/Scripts/Chart.bundle.min.js"></script>
 <script src="~/Theme/easion/js/chart-js-config.js"></script>
+
+
 <style>
-    a:hover{
-        text-decoration:none;
+    a:hover {
+        text-decoration: none;
     }
 </style>
-<div>
+<div class="ui-widget">
     <label>Tìm kiếm sách :</label>
     <input class="form-control" id="searchInput" />
 </div>
@@ -31,7 +36,7 @@
                 data: { search: $("#searchInput").val() },
                 success: function (data) {
                     response($.map(data, function (item) {
-                        return { label: item.text, value: item.text };
+                        return { label: item.label, value: item.val };
                     }));
                 },
                 error: function (xhr, status, error) {
@@ -53,7 +58,7 @@
                         <i class="fas fa-user"></i>
                     </div>
                     <div class="stats-data">
-                        <div class="stats-number">114</div>
+                        <div class="stats-number">@ViewBag.SoLuongKH</div>
                         <div class="stats-change">
                             <span class="stats-percentage">+25%</span>
                             <span class="stats-timeframe">so với tháng trước</span>
@@ -70,7 +75,7 @@
                         <i class="fas fa-cart-arrow-down"></i>
                     </div>
                     <div class="stats-data">
-                        <div class="stats-number">$25,541</div>
+                        <div class="stats-number">@ViewBag.DoanhThu Đ</div>
                         <div class="stats-change">
                             <span class="stats-percentage">+17.5%</span>
                             <span class="stats-timeframe">so với tháng trước</span>
@@ -185,8 +190,3 @@
         </div>
     </div>
 </div>
-
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-<script src="~/Theme/easion/js/easion.js"></script>

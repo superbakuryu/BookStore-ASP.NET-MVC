@@ -13,14 +13,14 @@ namespace QLSach.Controllers
 
         public ActionResult Index()
         {
+            ViewBag.DoanhThu = db.tb_CTPX.Sum(s=>s.thanhTien);
+            ViewBag.SoLuongKH = db.tb_PhieuXuat.Distinct().Count();
             if (Session["TaiKhoan"] != null)
             {
-                var item = from p in db.tb_Sach
-                           orderby p.soLuongTon descending
-                           select p;
-                return View(item);
+                return View();
             }
-            return Redirect("~/Home/Login");
+            //return Redirect("~/Home/Login");
+            return View();
         }
         [HttpGet]
         public ActionResult Login()
@@ -51,9 +51,16 @@ namespace QLSach.Controllers
         [HttpGet]
         public JsonResult GetSearchValue(string search)
         {
-            var allsearch = db.tb_Sach.Where(x => x.maSach.Contains(search)).ToList();
-            SelectList ls = new SelectList(allsearch, "maSach", "tieuDe");
-            return new JsonResult { Data = ls, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
+            //var allsearch = db.tb_Sach.Where(x => x.maSach.Contains(search)).ToList();
+            //SelectList ls = new SelectList(allsearch, "maSach", "tieuDe");
+            var customers = (from a in db.tb_Sach
+                             where a.tieuDe.Contains(search)
+                             select new
+                             {
+                                 label = a.tieuDe,
+                                 val = a.maSach
+                             }).ToList();
+            return Json(customers,JsonRequestBehavior.AllowGet);
         }
         public ActionResult About()
         {

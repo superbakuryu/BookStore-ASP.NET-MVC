@@ -107,10 +107,6 @@
                 @*@Html.DisplayNameFor(model => model.tb_NXB.tenNXB)*@
                 Ảnh
             </th>
-            <th>
-                @*@Html.DisplayNameFor(model => model.tb_NXB.tenNXB)*@
-                Mô tả
-            </th>
 
             <th><center>Thao tác</center></th>
         </tr>
@@ -146,9 +142,7 @@
             <td>
                 <img src="~/Anh/@item.anh" width="60px" />
             </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.moTa)
-            </td>
+      
             <td>
                 <center>
                     @Html.ActionLink("Sửa", "Edit", new { id = item.maSach }, new { @class = "btn btn--border btn--primary btn--animated" })
