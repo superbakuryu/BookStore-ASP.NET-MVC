@@ -19,8 +19,8 @@ namespace QLSach.Controllers
             {
                 return View();
             }
-            //return Redirect("~/Home/Login");
-            return View();
+            return Redirect("~/Home/Login");
+            //return View();
         }
         [HttpGet]
         public ActionResult Login()

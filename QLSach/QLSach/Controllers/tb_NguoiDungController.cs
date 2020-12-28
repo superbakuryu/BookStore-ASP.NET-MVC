@@ -52,6 +52,7 @@ namespace QLSach.Controllers
             {
                 db.tb_NguoiDung.Add(tb_NguoiDung);
                 db.SaveChanges();
+                setAlert("Thêm người dùng thành công","success");
                 return RedirectToAction("Index");
             }
 
@@ -84,6 +85,7 @@ namespace QLSach.Controllers
             {
                 db.Entry(tb_NguoiDung).State = EntityState.Modified;
                 db.SaveChanges();
+                setAlert("Sửa người dùng thành công", "success");
                 return RedirectToAction("Index");
             }
             return View(tb_NguoiDung);
@@ -112,6 +114,7 @@ namespace QLSach.Controllers
             tb_NguoiDung tb_NguoiDung = db.tb_NguoiDung.Find(id);
             db.tb_NguoiDung.Remove(tb_NguoiDung);
             db.SaveChanges();
+            setAlert("Xóa người dùng thành công", "success");
             return RedirectToAction("Index");
         }
 
@@ -122,6 +125,23 @@ namespace QLSach.Controllers
                 db.Dispose();
             }
             base.Dispose(disposing);
+        }
+        
+        protected void setAlert(string message, string type)
+        {
+            TempData["AlertMessage"] = message;
+            if (type == "success")
+            {
+                TempData["AlertType"] = "alert-success";
+            }
+            else if(type == "warning")
+            {
+                TempData["AlertType"] = "alert-warning";
+            }
+            else if (type == "error")
+            {
+                TempData["AlertType"] = "alert-danger";
+            }
         }
     }
 }

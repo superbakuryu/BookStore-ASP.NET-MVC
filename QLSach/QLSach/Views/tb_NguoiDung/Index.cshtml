@@ -3,12 +3,31 @@
 @{
     ViewBag.Title = "Index";
 }
+<link href="~/Content/bootstrap.css" rel="stylesheet" />
 <link rel="stylesheet" href="~/Theme/corporation/layout/styles/css-tu-tao.css" type="text/css" />
+<script src="~/Scripts/jquery-3.4.1.min.js"></script>
+<style>
+    a:hover {
+        text-decoration: none;
+    }
+</style>
 <h2>Thông tin</h2>
 
 <p>
     @Html.ActionLink("Thêm người dùng", "Create")
 </p>
+
+@if (TempData["AlertMessage"] != null)
+{
+    <div id="AlertBox" class="alert @TempData["AlertType"] hide">
+        @TempData["AlertMessage"]
+    </div>
+}
+
+<script>
+    $("#AlertBox").removeClass("hide");
+    $("#AlertBox").delay(2000).slideUp(500);
+</script>
 <table class="table">
     <thead>
         <tr>
@@ -26,21 +45,21 @@
     <tbody>
         @foreach (var item in Model)
         {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.TaiKhoan)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.MatKhau)
-            </td>
-            <td>
-                <center>
-                    @Html.ActionLink("Sửa", "Edit", new { id = item.TaiKhoan }, new { @class = "btn btn--border btn--primary btn--animated" })
-                    @Html.ActionLink("Chi tiết", "Details", new { id = item.TaiKhoan }, new { @class = "btn btn--border btn--primary btn--animated" })
-                    @Html.ActionLink("Xóa", "Delete", new { id = item.TaiKhoan }, new { @class = "btn btn--border btn--primary btn--animated" })
-                </center>
-            </td>
-        </tr>
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TaiKhoan)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.MatKhau)
+                </td>
+                <td>
+                    <center>
+                        @Html.ActionLink("Sửa", "Edit", new { id = item.TaiKhoan }, new { @class = "btn btn--border btn--primary btn--animated" })
+                        @Html.ActionLink("Chi tiết", "Details", new { id = item.TaiKhoan }, new { @class = "btn btn--border btn--primary btn--animated" })
+                        @Html.ActionLink("Xóa", "Delete", new { id = item.TaiKhoan }, new { @class = "btn btn--border btn--primary btn--animated" })
+                    </center>
+                </td>
+            </tr>
         }
     </tbody>
-    </table>
+</table>
