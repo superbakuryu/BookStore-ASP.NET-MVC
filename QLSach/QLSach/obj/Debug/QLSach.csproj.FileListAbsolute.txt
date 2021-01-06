@@ -126,7 +126,6 @@ C:\Users\hp\thuan.github.io\QLSach\QLSach\bin\PagedList.dll
 C:\Users\hp\thuan.github.io\QLSach\QLSach\bin\PagedList.Mvc.dll
 C:\Users\hp\thuan.github.io\QLSach\QLSach\bin\PagedList.xml
 C:\Users\hp\thuan.github.io\QLSach\QLSach\bin\PagedList.Mvc.xml
-C:\Users\hp\thuan.github.io\QLSach\QLSach\obj\Debug\QLSach.csprojAssemblyReference.cache
 C:\Users\hp\thuan.github.io\QLSach\QLSach\bin\roslyn\csc.exe.config
 C:\Users\hp\thuan.github.io\QLSach\QLSach\bin\roslyn\csc.rsp
 C:\Users\hp\thuan.github.io\QLSach\QLSach\bin\roslyn\csi.exe

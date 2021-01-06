@@ -13,8 +13,20 @@ namespace QLSach.Controllers
 
         public ActionResult Index()
         {
-            ViewBag.DoanhThu = db.tb_CTPX.Sum(s=>s.thanhTien);
+            ViewBag.DoanhThu = db.tb_PhieuXuat.Sum(s=>s.thanhTien);
             ViewBag.SoLuongKH = db.tb_PhieuXuat.Distinct().Count();
+            ViewBag.Quy1 = db.tb_PhieuXuat.Where(s => s.ngayXuat.ToString().Contains("2020-01") ||
+                                                        s.ngayXuat.ToString().Contains("2020-02") ||
+                                                        s.ngayXuat.ToString().Contains("2020-03")).Sum(s => s.thanhTien);
+            ViewBag.Quy2 = db.tb_PhieuXuat.Where(s => s.ngayXuat.ToString().Contains("2020-04") ||
+                                                        s.ngayXuat.ToString().Contains("2020-05") ||
+                                                        s.ngayXuat.ToString().Contains("2020-06")).Sum(s => s.thanhTien);
+            ViewBag.Quy3 = db.tb_PhieuXuat.Where(s => s.ngayXuat.ToString().Contains("2020-07") ||
+                                                        s.ngayXuat.ToString().Contains("2020-08") ||
+                                                        s.ngayXuat.ToString().Contains("2020-09")).Sum(s => s.thanhTien);
+            ViewBag.Quy4 = db.tb_PhieuXuat.Where(s => s.ngayXuat.ToString().Contains("2020-10") ||
+                                                        s.ngayXuat.ToString().Contains("2020-11") ||
+                                                        s.ngayXuat.ToString().Contains("2020-12")).Sum(s => s.thanhTien);
             if (Session["TaiKhoan"] != null)
             {
                 return View();

@@ -36,7 +36,8 @@
                 data: { search: $("#searchInput").val() },
                 success: function (data) {
                     response($.map(data, function (item) {
-                        return { label: item.label, value: item.val };
+                        //return { label: item.label, value: item.val };
+                        return { label: item.label, value: item.label };
                     }));
                 },
                 error: function (xhr, status, error) {
@@ -78,7 +79,7 @@
                         <div class="stats-number">@ViewBag.DoanhThu Đ</div>
                         <div class="stats-change">
                             <span class="stats-percentage">+17.5%</span>
-                            <span class="stats-timeframe">so với tháng trước</span>
+                            <span class="stats-timeframe">so với năm trước</span>
                         </div>
                     </div>
                 </div>
@@ -92,7 +93,7 @@
                         <i class="fas fa-phone"></i>
                     </div>
                     <div class="stats-data">
-                        <div class="stats-number">0987654321</div>
+                        <div class="stats-number">0986651353</div>
                     </div>
                 </div>
             </div>
@@ -105,16 +106,16 @@
                     <div class="easion-card-icon">
                         <i class="fas fa-chart-bar"></i>
                     </div>
-                    <div class="easion-card-title"> Bar Chart </div>
+                    <div class="easion-card-title"> Doanh thu theo quý </div>
                     <div class="easion-card-menu">
                         <div class="dropdown show">
-                            <a class="easion-card-menu-link" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            @*<a class="easion-card-menu-link" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             </a>
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuLink">
                                 <a class="dropdown-item" href="#">Action</a>
                                 <a class="dropdown-item" href="#">Another action</a>
                                 <a class="dropdown-item" href="#">Something else here</a>
-                            </div>
+                            </div>*@
                         </div>
                     </div>
                 </div>
@@ -125,10 +126,10 @@
                         var myChart = new Chart(ctx, {
                             type: 'bar',
                             data: {
-                                labels: ["Thứ hai", "Thứ ba", "Thứ tư", "Thứ năm", "Thứ sáu"],
+                                labels: ["Quý 1", "Quý 2", "Quý 3", "Quý 4"],
                                 datasets: [{
-                                    label: 'Blue',
-                                    data: [12, 19, 3, 5, 2],
+                                    label: 'VNĐ',
+                                    data: [@ViewBag.Quy1, @ViewBag.Quy2, @ViewBag.Quy3, @ViewBag.Quy4],
                                     backgroundColor: window.chartColors.primary,
                                     borderColor: 'transparent'
                                 }]
@@ -156,33 +157,33 @@
                     <div class="easion-card-icon">
                         <i class="fas fa-bell"></i>
                     </div>
-                    <div class="easion-card-title"> Notifications </div>
+                    <div class="easion-card-title"> Thông báo </div>
                 </div>
                 <div class="card-body ">
                     <div class="notifications">
-                        <a href="#!" class="notification">
+                        <a href="/tb_Sach/Details/CN" class="notification">
                             <div class="notification-icon">
                                 <i class="fas fa-inbox"></i>
                             </div>
-                            <div class="notification-text">New comment</div>
-                            <span class="notification-time">21 days ago</span>
+                            <div class="notification-text">Sách mới </div>
+                            <span class="notification-time">2 ngày trước</span>
                         </a>
-                        <a href="#!" class="notification">
+                        <a href="/tb_Sach/Details/CONAN" class="notification">
                             <div class="notification-icon">
                                 <i class="fas fa-inbox"></i>
                             </div>
-                            <div class="notification-text">New comment</div>
-                            <span class="notification-time">21 days ago</span>
+                            <div class="notification-text">Sách mới</div>
+                            <span class="notification-time">2 ngày trước</span>
                         </a>
-                        <a href="#!" class="notification">
+                        <a href="/tb_Sach/Details/Doraemon" class="notification">
                             <div class="notification-icon">
                                 <i class="fas fa-inbox"></i>
                             </div>
-                            <div class="notification-text">New comment</div>
-                            <span class="notification-time">21 days ago</span>
+                            <div class="notification-text">Sách mới</div>
+                            <span class="notification-time">2 ngày trước</span>
                         </a>
                         <div class="notifications-show-all">
-                            <a href="#!">Show all</a>
+                            <a href="/tb_Sach">Show all</a>
                         </div>
                     </div>
                 </div>
